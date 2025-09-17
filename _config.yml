@@ -36,8 +36,8 @@ github:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: xiaoyu
-  email: yu2121wfy@qq.com # change to your email address
+  name: wangfuyu
+  email: 936466975@qq.com # change to your email address
   #links:
     # The first element serves as the copyright owner's link
     #- https://twitter.com/username # change to your twitter homepage
@@ -201,9 +201,8 @@ defaults:
       layout: page
       permalink: /:title/
   - scope:
-      path:"" # assets/js/dist
+      path: assets/js/dist
     values:
-      layout: page
       swcache: true
 
 sass:
@@ -225,7 +224,6 @@ exclude:
   - tools
   - README.md
   - LICENSE
-  - purgecss.js
   - "*.config.js"
   - package*.json
 
