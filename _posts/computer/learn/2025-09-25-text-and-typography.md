@@ -7,8 +7,7 @@ date: 2025-09-25 11:33:00 +0800
 pin: true
 math: true
 mermaid: true
-image:
-  alt: Responsive rendering of Chirpy theme on multiple devices.
+
 ---
 
 ## Text and Typography
