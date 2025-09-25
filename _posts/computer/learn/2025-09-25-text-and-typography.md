@@ -1,6 +1,7 @@
 ---
 title: Text and Typography
-description: Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.
+description: >-
+  Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.
 author: wangfuyu
 date: 2025-09-25 11:33:00 +0800
 pin: true
@@ -8,26 +9,14 @@ math: true
 mermaid: true
 image:
   path: {{site.images-path}}chirpy/devices-mockup.png
-  lqip: data:image/webp;base64,UklGRpoAAABXRUJQVlA4WAoAAAAQAAAADwAABwAAQUxQSDIAAAARL0AmbZurmr57yyIiqE8oiG0bejIYEQTgqiDA9vqnsUSI6H+oAERp2HZ65qP/VIAWAFZQOCBCAAAA8AEAnQEqEAAIAAVAfCWkAALp8sF8rgRgAP7o9FDvMCkMde9PK7euH5M1m6VWoDXf2FkP3BqV0ZYbO6NA/VFIAAAA
   alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 
-## Headings
+## Text and Typography
 
 <!-- markdownlint-capture -->
 <!-- markdownlint-disable -->
-# H1 — heading
-{: .mt-4 .mb-0 }
 
-## H2 — heading
-{: data-toc-skip='' .mt-4 .mb-0 }
-
-### H3 — heading
-{: data-toc-skip='' .mt-4 .mb-0 }
-
-#### H4 — heading
-{: data-toc-skip='' .mt-4 }
-<!-- markdownlint-restore -->
 
 ## Paragraph
 
@@ -131,7 +120,7 @@ fi;
 ```
 {: file='_sass/jekyll-theme-chirpy.scss'}
 
-<!--
+
 ## Mathematics
 
 The mathematics powered by [**MathJax**](https://www.mathjax.org/):
@@ -158,7 +147,7 @@ $$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
   banana :crit, b, 2017-07-23, 1d
   cherry :active, c, after b a, 1d
 ```
--->
+
 ## Images
 
 ### Default (with caption)
