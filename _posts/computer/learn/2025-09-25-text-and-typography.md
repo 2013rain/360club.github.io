@@ -8,7 +8,6 @@ pin: true
 math: true
 mermaid: true
 image:
-  path: {{site.images-path}}chirpy/devices-mockup.png
   alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
 
