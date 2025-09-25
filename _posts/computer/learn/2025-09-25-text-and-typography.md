@@ -82,9 +82,7 @@ Moon
 
 
 
-## Footnote
 
-Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].
 
 ## Inline code
 
@@ -180,10 +178,7 @@ The image below will toggle dark/light mode based on theme preference, notice it
 
 {% include embed/youtube.html id='Balreaj8Yqs' %}
 
-## Reverse Footnote
 
-[^footnote]: The footnote source
-[^fn-nth-2]: The 2nd footnote source
 
 ## link
 
