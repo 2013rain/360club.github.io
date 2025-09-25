@@ -1,10 +1,8 @@
 ---
 title: Text and Typography
 description: Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.
-author: cotes
-date: 2019-08-08 11:33:00 +0800
-categories: [Blogging, Demo]
-tags: [typography]
+author: wangfuyu
+date: 2025-09-25 11:33:00 +0800
 pin: true
 math: true
 mermaid: true
@@ -93,9 +91,7 @@ Moon
 | Island Trading               | Helen Bennett    |      UK |
 | Magazzini Alimentari Riuniti | Giovanni Rovelli |   Italy |
 
-## Links
 
-<http://127.0.0.1:4000>
 
 ## Footnote
 
@@ -192,7 +188,7 @@ The image below will toggle dark/light mode based on theme preference, notice it
 
 ## Video
 
-{% include embed/youtube.html id='Balreaj8Yqs' %}
+{% include embed/youtube.html   %}
 
 ## Reverse Footnote
 
