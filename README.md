@@ -61,3 +61,24 @@ This work is published under [MIT][mit] License.
 [use-template]: https://github.com/cotes2020/chirpy-starter/generate
 [CD]: https://en.wikipedia.org/wiki/Continuous_deployment
 [mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+
+
+
+## buildtest -Mac
+
+```shell
+## -- macOS (Homebrew)
+# brew install rbenv
+# echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
+# source ~/.zshrc
+##-- 列出可用版本
+#rbenv install -l
+## - 安装（自动编译）
+#rbenv install 3.3.10
+# 设为全局默认
+#rbenv global 3.3.10
+# bundle install
+bundle exec jekyll build
+# bundle exec jekyll serve
+```
+

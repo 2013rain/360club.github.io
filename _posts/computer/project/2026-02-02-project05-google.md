@@ -1,4 +1,20 @@
+---
+title: learn - google的vertex
+author: "wangfuyu"
+description: >-
+  服务器接入google的nano-bananer，其实就是文生图，图生图。
+date: 2026-02-02 12:00:00 +0800
+categories: ["project", "google"]
+tags: ["llm", "project"]
+math: true 
+img_path: /static/image/
 
+
+
+
+
+---
+## google的vertex
 
 >有关例子拷贝：
 >
