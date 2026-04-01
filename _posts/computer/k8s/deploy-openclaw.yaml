@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openclaw-deployment
+  labels:
+    app: openclaw
+spec:
+  replicas: 1  # 建议设置为 1，除非应用支持多实例并行运行
+  selector:
+    matchLabels:
+      app: openclaw
+  template:
+    metadata:
+      labels:
+        app: openclaw
+    spec:
+      containers:
+      - name: openclaw
+        image: ghcr.io/openclaw/openclaw:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 18789  # 请根据实际镜像暴露的端口修改
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        # 挂载数据目录（可选，如果需要持久化数据）
+        volumeMounts:
+        - name: openclaw-data
+          mountPath: /home/node/.openclaw  # 请根据应用实际数据路径修改
+      # 定义存储卷
+      volumes:
+      - name: openclaw-data
+        hostPath:           # 使用 hostPath 简单方案，生产环境建议用 NFS 或 Ceph
+          path: /data/openclaw/001
+          type: DirectoryOrCreate
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: openclaw-service
+spec:
+  selector:
+    app: openclaw
+  ports:
+    - protocol: TCP
+      port: 80        # Service 对外端口
+      targetPort: 18789 # 容器内部端口
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: openclaw-ingress
+  annotations:
+    # 如果使用 Nginx Ingress Controller，可以配置重写规则等
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx # 指定 Ingress 控制器类
+  rules:
+  - host: "openclaw.local" # 修改为你的域名或 IP
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: openclaw-service
+            port:
+              number: 80
