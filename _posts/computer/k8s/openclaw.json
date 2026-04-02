@@ -1,0 +1,221 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.23",
+    "lastTouchedAt": "2026-03-25T13:07:10.461Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-25T10:29:34.508Z",
+    "lastRunVersion": "2026.3.23",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "ollama:manual": {
+        "provider": "ollama",
+        "mode": "token"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "openrouter": {
+        "baseUrl": "https://openrouter.ai",
+        "apiKey": "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",
+        "models": [
+          {
+            "id": "openrouter-openai/gpt-oss-120b:free",
+            "name": "openrouter-openai/gpt-oss-120b:free"
+          }
+        ]
+      },
+      "ollama": {
+        "baseUrl": "http://192.168.110.170:11434/v1",
+        "apiKey": "ollama",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "glm-4.7-flash",
+            "name": "glm-4.7-flash",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 8192,
+            "maxTokens": 8192
+          },
+          {
+            "id": "qwen3-vl:4b",
+            "name": "qwen3-vl:4b",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 16000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "moondream:1.8b",
+            "name": "moondream:1.8b",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 2048,
+            "maxTokens": 8192
+          },
+          {
+            "id": "llava:7b",
+            "name": "llava:7b",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 32768,
+            "maxTokens": 8192
+          },
+          {
+            "id": "gemma3:4b",
+            "name": "gemma3:4b",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 16000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "qwen2.5-coder:3b",
+            "name": "qwen2.5-coder:3b",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 30000,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "ollama/qwen3-vl:4b"
+      },
+      "workspace": "/home/node/.openclaw/workspace",
+      "maxConcurrent": 4,
+      "sandbox": {
+        "mode": "off"
+      }
+    }	
+  },
+  "tools": {
+    "profile": "coding",
+    "fs": {
+      "workspaceOnly": true
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "remote",
+    "bind": "custom",
+	"customBindHost":"172.17.0.2",
+	"remote":{
+		"url":"wss://192.168.110.170:18789",
+	},
+    "controlUi": {
+      "allowedOrigins": [
+        "http://localhost:18789",
+        "http://192.168.110.170:18789",
+        "http://192.168.65.1",
+        "http://127.0.0.1:18789"
+      ],
+	  "dangerouslyDisableDeviceAuth": true,
+	   "enabled": true
+    },
+    "auth": {
+      "mode": "token",
+      "token": "73a35274d62ad67df626bad7f1382eaf2ebc82b440d4887c",
+	  "password":"73a35274d62ad67df626bad7f1382eaf2ebc82b440d4887c",
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "http": {
+      "endpoints": {
+        "chatCompletions": {
+          "enabled": true
+        },
+        "responses": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "memory": {
+    "qmd": {}
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "ollama": {
+        "enabled": true
+      }
+    }
+  }
+}
