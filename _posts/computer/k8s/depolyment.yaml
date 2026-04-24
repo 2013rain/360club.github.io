@@ -1,0 +1,61 @@
+#
+# kubectl apply -f pod.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unique-claw-001 # Deployment 自身标识：名称 + 命名空间唯一（与 Pod 类似）。
+  namespace: default
+spec:
+  replicas: 1  #  永远只运行一个实例
+  strategy:
+    type: Recreate  # 默认 RollingUpdate 策略，绝对不能容忍双 Pod 同时存在，可以把 strategy.type 改为 Recreate
+  revisionHistoryLimit: 2   # 减少历史版本
+  selector:
+    matchLabels:
+      app: unique-claw-001   # 用来匹配 Pod 的标签
+  template:
+    metadata:
+      labels:
+        app: unique-claw-001
+    spec:
+      restartPolicy: Always    # Pod 异常退出后自动重启（默认就是 Always，可省略）
+      runtimeClassName: gvisor  # 关键：指定使用 gvisor 运行时
+      containers:
+      - name: app
+        image: redis:7.2.5
+        ports:
+          - containerPort: 6379
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        # 1. 启动探针：仅在 Pod 启动期间执行，成功后不再介入
+        startupProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - |
+              # 使用 timeout 防止 redis-cli 卡死
+              timeout 3 redis-cli -h 127.0.0.1 -p 6379  --no-auth-warning PING | grep  PONG
+          initialDelaySeconds: 10      # 容器启动后等10秒才开始探测
+          periodSeconds: 5             # 每5秒探测一次
+          timeoutSeconds: 3            # 探测超时时间3秒
+          failureThreshold: 30         # 允许失败30次，启动慢时可适当放宽
+          successThreshold: 1          # 成功1次即认为探针成功
+    # 2. 存活探针：Pod 稳定运行后，持续检查 Redis 状态
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - -c
+            - |
+              timeout 3 redis-cli -h 127.0.0.1 -p 6379 --no-auth-warning PING | grep  PONG
+          initialDelaySeconds: 0       # 从 startup 结束后开始
+          periodSeconds: 15            # 每15秒探测一次
+          timeoutSeconds: 3            # 超时时间3秒
+          failureThreshold: 3          # 连续失败3次才重启容器
+          successThreshold: 1          # 成功1次即恢复健康
