@@ -23,6 +23,11 @@ spec:
       containers:
       - name: app
         image: redis:7.2.5
+        env:
+          - name: MY_POD_IP # 环境变量，分配的ip地址
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
         ports:
           - containerPort: 6379
         resources:
@@ -41,7 +46,7 @@ spec:
             - |
               # 使用 timeout 防止 redis-cli 卡死
               timeout 3 redis-cli -h 127.0.0.1 -p 6379  --no-auth-warning PING | grep  PONG
-          initialDelaySeconds: 10      # 容器启动后等10秒才开始探测
+          initialDelaySeconds: 1      # 容器启动后等1秒才开始探测
           periodSeconds: 5             # 每5秒探测一次
           timeoutSeconds: 3            # 探测超时时间3秒
           failureThreshold: 30         # 允许失败30次，启动慢时可适当放宽
