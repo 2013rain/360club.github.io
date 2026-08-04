@@ -18,7 +18,7 @@ order: 4
         <td  style="border:0;text-align:left"><b>姓名：</b></td>
       <td  style="border:0;text-align:left">王富雨</td>
         <td  style="border:0;text-align:left"><b>求职意向：</b></td>
-      <td  style="border:0;text-align:left">Golang、Ai-Agent、服务端架构师</td>
+      <td  style="border:0;text-align:left">Golang、Ai-Agent、云原生</td>
     </tr>
    <tr style="border:0;">
        <td  style="border:0;text-align:left"><b>电话：</b></td>
@@ -40,6 +40,7 @@ order: 4
     </tr>
   </tbody>
 </table>
+
 
 
 
